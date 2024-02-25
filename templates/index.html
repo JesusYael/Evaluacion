@@ -1,0 +1,73 @@
+$def with (usuarios)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            transition: .3s;
+        }
+        th {
+            background-color: #009879;
+            color: #fff;
+        }
+        tr:hover {
+            background-color: #f3f3f3;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #009879;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-decoration: none;
+            transition: .3s;
+        }
+        a:hover {
+            background-color: #007B70;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuarios y sus Privilegios</h1>
+    <table>
+        <tr>
+            <th>Nombre de Usuario</th>
+            <th>Rol</th>
+            <th>Status</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        $for usuario in usuarios:
+            <tr>
+                <td>$usuario['nombre_usuario']</td>
+                <td>$usuario['rol']</td>
+                <td>$usuario['status']</td>
+                <td><a href="/edit_user/$usuario['id_usuario']">Editar usuario</a></td>
+                <td><a href="/delete_user/$usuario['id_usuario']">Eliminar usuario</a></td>
+            </tr>
+    </table>
+    <a href="/add_user">Agregar Usuario</a>
+    <a href="/assign_privilege">Asignar Privilegio</a>
+    <a href="/view_privilegios">Ver Privilegios</a>
+    <a href="/consult">Consultas</a>
+</body>
+</html>
